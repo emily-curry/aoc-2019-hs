@@ -31,8 +31,6 @@ getPathname f = do
 
 takeUntilInclusive :: (a -> Bool) -> [a] -> [a]
 takeUntilInclusive _ [] = []
-takeUntilInclusive p (x : xs) =
-  x
-    : if p x
-      then []
-      else takeUntilInclusive p xs
+takeUntilInclusive p (x : xs)
+  | p x = [x]
+  | otherwise = x : takeUntilInclusive p xs
