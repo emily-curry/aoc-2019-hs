@@ -1,0 +1,25 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.35.0.
+--
+-- see: https://github.com/sol/hpack
+
+name:           aoc02
+version:        0.1.0.0
+author:         Emily Curry
+maintainer:     emily@curry.sh
+copyright:      2023 Emily Curry
+license:        BSD3
+build-type:     Simple
+
+executable aoc02
+  main-is: Main.hs
+  other-modules:
+      Paths_aoc02
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      aoclib
+    , base >=4.7 && <5
+  default-language: Haskell2010

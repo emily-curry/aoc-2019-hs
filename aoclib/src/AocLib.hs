@@ -1,5 +1,6 @@
 module AocLib
   ( getPuzzleInput,
+    getPuzzleInputFromFilename,
   )
 where
 
@@ -12,6 +13,10 @@ repoDir = "aoc-2019-hs"
 getPuzzleInput :: IO String
 getPuzzleInput = do
   fname <- getInputFilename
+  getPuzzleInputFromFilename fname
+
+getPuzzleInputFromFilename :: String -> IO String
+getPuzzleInputFromFilename fname = do
   path <- getPathname fname
   readFile path
 
