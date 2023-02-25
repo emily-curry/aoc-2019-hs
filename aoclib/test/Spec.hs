@@ -5,6 +5,8 @@ import AocLib
 import IntCode (fromString, getArgs, run, withArgs)
 import Test.HUnit
 
+testIntcode = fromString "1,9,10,3,2,3,11,0,99,30,40,50"
+
 tests :: Test
 tests =
   TestList
@@ -17,11 +19,10 @@ tests =
 tIntCodeWithArgs =
   TestCase
     ( do
-        input <- getPuzzleInputFromFilename "ic01.txt"
-        let (inoun, iverb) = getArgs $ fromString input
+        let (inoun, iverb) = getArgs testIntcode
         assertEqual "first argument initial" 9 inoun
         assertEqual "second argument initial" 10 iverb
-        let (noun, verb) = getArgs $ withArgs 12 2 $ fromString input
+        let (noun, verb) = getArgs $ withArgs 12 2 testIntcode
         assertEqual "first argument" 12 noun
         assertEqual "second argument" 2 verb
     )
@@ -29,9 +30,7 @@ tIntCodeWithArgs =
 tIntCode1 =
   TestCase
     ( do
-        input <- getPuzzleInputFromFilename "ic01.txt"
-        let initial = fromString input
-        let (result, _) = run initial
+        let (result, _) = run testIntcode
         assertEqual "ic01 program results in value 3500" 3500 result
     )
 
@@ -45,8 +44,8 @@ tGetPuzzleInput =
 tGetPuzzleInputFromFilename =
   TestCase
     ( do
-        input <- getPuzzleInputFromFilename "ic01.txt"
-        assertEqual "" "1,9,10,3,2,3,11,0,99,30,40,50" input
+        input <- getPuzzleInputFromFilename "lib.txt"
+        assertEqual "getPuzzleInputFromFilename returns contents of lib.txt" "okay!\nline 2!" input
     )
 
 main :: IO Counts
